@@ -59,10 +59,10 @@ const SidebarComponent = ({ isCollapsed, isToggled, setIsToggled }: any) => {
           },
         }}
       >
-        {sidebarMenuItems.map((menu) =>
+        {sidebarMenuItems.map((menu: any) =>
           menu.subMenu ? (
             <SubMenu key={menu.label} label={menu.label} icon={menu.icon}>
-              {menu.subMenu.map((subItem) => (
+              {menu.subMenu.map((subItem: any) => (
                 <MenuItem
                   key={subItem.label}
                   icon={subItem.icon}

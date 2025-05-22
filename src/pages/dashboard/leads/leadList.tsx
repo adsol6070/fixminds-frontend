@@ -1,6 +1,5 @@
 import { useState, useMemo } from "react";
 import {
-  Container,
   Button,
   Table,
   Pagination,
@@ -15,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "@/config/route-paths.config";
 import { useAllLeads, useDeleteLead } from "@/hooks/useLeads";
 import Swal from "sweetalert2";
+import { resolveRoute } from "@/utils/resolveRoute";
 
 const LeadList = () => {
   const navigate = useNavigate();
@@ -181,7 +181,9 @@ const LeadList = () => {
                       variant="outline-primary"
                       size="sm"
                       className="m-1"
-                      onClick={() => navigate((ROUTES.PRIVATE.LEAD_PREVIEW as (id: string) => string)(lead._id))}
+                      onClick={() => {
+                        navigate(resolveRoute(ROUTES.PRIVATE.LEAD_PREVIEW, lead._id));
+                      }}
                     >
                       <FaEye />
                     </Button>
